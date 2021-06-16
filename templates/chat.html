@@ -1,0 +1,634 @@
+{% load static %} 
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from uitheme.net/sociala/default.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 21 Apr 2021 07:53:25 GMT -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ReflectYou</title>
+
+    <link rel="stylesheet" href="{% static 'css/themify-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'css/feather.css' %}">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicon.png' %}">
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/emoji.css' %}">
+  
+    
+    <link rel="stylesheet" href="{% static 'css/lightbox.css' %}">
+   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+
+</head>
+
+<body class="color-theme-blue mont-font">
+
+    <div class="preloader"></div>
+
+    
+    <div class="main-wrapper">
+
+        <!-- navigation top-->
+        <div class="nav-header bg-white shadow-xs border-0">
+            <div class="nav-top">
+                <a href="{% url 'HomeView' %}"><i class="feather-zap text-success display1-size me-2 ms-0"></i><span class="d-inline-block fredoka-font ls-3 fw-600 text-current font-xxl logo-text mb-0">ReflectYou </span> </a>
+                <!-- <a href="#" class="mob-menu ms-auto me-2 chat-active-btn"><i class="feather-message-circle text-grey-900 font-sm btn-round-md bg-greylight"></i></a>
+                <a href="" class="mob-menu me-2"><i class="feather-video text-grey-900 font-sm btn-round-md bg-greylight"></i></a> -->
+                <a href="#" class="me-2 menu-search-icon mob-menu"><i class="feather-search text-grey-900 font-sm btn-round-md bg-greylight"></i></a>
+                <button class="nav-menu me-0 ms-2"></button>
+                <a href="{% url 'SettingsView' %}" class="p-0 ms-3 menu-icon mob-menu"><img src="{{user.image.url}}" alt=""  onerror=this.src="{% static 'images/profile-2.png' %}" class="w40 rounded-circle mt--1"></a>
+                
+            </div>
+            <form action="{% url 'search_function' %}" method="GET" class="float-left header-search">
+                <div class="form-group mb-0 icon-input">
+                    <i class="feather-search font-sm text-grey-400"></i>
+                    <input type="text" name="search_text" placeholder="Start typing to search.." class="bg-grey border-0 lh-32 pt-2 pb-2 ps-5 pe-3 font-xssss fw-500 rounded-xl w350 theme-dark-bg">
+                </div>
+            </form>
+            <!-- <a href="{% url 'HomeView' %}" class="p-2 text-center ms-3 menu-icon center-menu-icon"><i class="feather-home font-lg alert-primary btn-round-lg theme-dark-bg text-current "></i></a> -->
+            <!-- <a href="default-storie.html" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-zap font-lg bg-greylight btn-round-lg theme-dark-bg text-grey-500 "></i></a> -->
+            <!-- <a href="default-video.html" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-video font-lg bg-greylight btn-round-lg theme-dark-bg text-grey-500 "></i></a> -->
+            <!-- <a href="{% url 'users_list' %}" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-user font-lg bg-greylight btn-round-lg theme-dark-bg text-grey-500 "></i></a> -->
+            <!-- <a href="shop-2.html" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-shopping-bag font-lg bg-greylight btn-round-lg theme-dark-bg text-grey-500 "></i></a> -->
+
+            <a href="#" class="p-2 text-center ms-auto menu-icon" id="dropdownMenu3" data-bs-toggle="dropdown" aria-expanded="false"><span class="dot-count bg-warning"></span><i class=" font-xl text-current"></i></a>
+            <!-- <div class="dropdown-menu dropdown-menu-end p-4 rounded-3 border-0 shadow-lg" aria-labelledby="dropdownMenu3">
+                
+                <h4 class="fw-700 font-xss mb-4">Notification</h4>
+                <div class="card bg-transparent-card w-100 border-0 ps-5 mb-3">
+                    <img src="{% static 'images/user-8.png' %}" alt="user" class="w40 position-absolute left-0">
+                    <h5 class="font-xsss text-grey-900 mb-1 mt-0 fw-700 d-block">Hendrix Stamp <span class="text-grey-400 font-xsssss fw-600 float-right mt-1"> 3 min</span></h5>
+                    <h6 class="text-grey-500 fw-500 font-xssss lh-4">There are many variations of pass..</h6>
+                </div>
+                <div class="card bg-transparent-card w-100 border-0 ps-5 mb-3">"background-image: url(images/login-bg.jpg);"
+                    <img src="{% static 'images/user-4.png' %}" alt="user" class="w40 position-absolute left-0">
+                    <h5 class="font-xsss text-grey-900 mb-1 mt-0 fw-700 d-block">Goria Coast <span class="text-grey-400 font-xsssss fw-600 float-right mt-1"> 2 min</span></h5>
+                    <h6 class="text-grey-500 fw-500 font-xssss lh-4">Mobile Apps UI Designer is require..</h6>
+                </div>
+
+                <div class="card bg-transparent-card w-100 border-0 ps-5 mb-3">
+                    <img src="{% static 'images/user-7.png' %}" alt="user" class="w40 position-absolute left-0">
+                    <h5 class="font-xsss text-grey-900 mb-1 mt-0 fw-700 d-block">Surfiya Zakir <span class="text-grey-400 font-xsssss fw-600 float-right mt-1"> 1 min</span></h5>
+                    <h6 class="text-grey-500 fw-500 font-xssss lh-4">Mobile Apps UI Designer is require..</h6>
+                </div>
+                <div class="card bg-transparent-card w-100 border-0 ps-5">
+                    <img src="{% static 'images/user-6.png' %}" alt="user" class="w40 position-absolute left-0">
+                    <h5 class="font-xsss text-grey-900 mb-1 mt-0 fw-700 d-block">Victor Exrixon <span class="text-grey-400 font-xsssss fw-600 float-right mt-1"> 30 sec</span></h5>
+                    <h6 class="text-grey-500 fw-500 font-xssss lh-4">Mobile Apps UI Designer is require..</h6>
+                </div>
+            </div> -->
+            {% if request.user.is_authenticated %}
+            <b class="center-menu-icon ">{{ user.get_username }}</b>
+            {% endif %}
+            <!-- <a href="#" class="p-2 text-center ms-3 menu-icon chat-active-btn"><i class="feather-message-square font-xl text-current"></i></a> -->
+           
+            
+
+            <a href="{% url 'SettingsView' %}" class="p-0 ms-3 menu-icon"><img src="{{user.image.url}}" alt=""  onerror=this.src="{% static 'images/profile-2.png' %}" class="w40 rounded-circle mt--1"></a>
+            
+        </div>
+        <!-- navigation top -->
+
+        <!-- navigation left -->
+        <nav class="navigation scroll-bar">
+            <div class="container ps-0 pe-0">
+                <div class="nav-content">
+                    <div class="nav-wrap bg-white bg-transparent-card rounded-xxl shadow-xss pt-3 pb-1 mb-2 mt-2">
+                        <div class="nav-caption fw-600 font-xssss text-grey-500"><span> </span></div>
+                        <ul class="mb-1 top-content">
+                            <li class="logo d-none d-xl-block d-lg-block"></li>
+                            <li><a href="{% url 'HomeView' %}" class="nav-content-bttn open-font" ><i class="feather-home btn-round-md bg-blue-gradiant me-3"></i><span>Home</span></a></li>
+                            <li><a href="{% url 'friendslist' 1 %}" class="nav-content-bttn open-font" ><i class="fas fa-user-check btn-round-md bg-red-gradiant me-3"></i><span>Friends</span></a></li>
+                            <li><a href="{% url 'friendslist' 2 %}" class="nav-content-bttn open-font" ><i class="fas fa-users btn-round-md bg-gold-gradiant me-3"></i><span>Followers</span></a></li>
+                            <li><a href="{% url 'friendslist' 3 %}" class="nav-content-bttn open-font" ><i class="fas fa-user-friends btn-round-md bg-mini-gradiant me-3"></i><span>Following</span></a></li>
+                            <li><a href="" class="nav-content-bttn open-font"><i class="feather-user btn-round-md bg-primary-gradiant me-3"></i><span>User Profile </span></a></li>  
+                            <li><a href="{% url 'users_list' %}" class="nav-content-bttn open-font"><i class="fas fa-users btn-round-md bg-red-gradiant me-3"></i><span>People</span></a></li>  
+                            <li><a href="{% url 'friendslist' 4  %}" class="nav-content-bttn open-font"><i class="font-sm feather-message-square btn-round-md  me-3 bg-gold-gradiant "></i><span>Chat</span><span class="circle-count bg-warning mt-0"></span></a></li>                       
+                        </ul>
+                    </div>
+
+                    <!-- <div class="nav-wrap bg-white bg-transparent-card rounded-xxl shadow-xss pt-3 pb-1 mb-2">
+                        <div class="nav-caption fw-600 font-xssss text-grey-500"><span>More </span>Pages</div>
+                        <ul class="mb-3">
+                            <li><a href="default-email-box.html" class="nav-content-bttn open-font"><i class="font-xl text-current feather-inbox me-3"></i><span>Email Box</span><span class="circle-count bg-warning mt-1">584</span></a></li>
+                            <li><a href="default-hotel.html" class="nav-content-bttn open-font"><i class="font-xl text-current feather-home me-3"></i><span>Near Hotel</span></a></li>
+                            <li><a href="default-event.html" class="nav-content-bttn open-font"><i class="font-xl text-current feather-map-pin me-3"></i><span>Latest Event</span></a></li>
+                            <li><a href="default-live-stream.html" class="nav-content-bttn open-font"><i class="font-xl text-current feather-youtube me-3"></i><span>Live Stream</span></a></li>                        
+                        </ul>
+                    </div> -->
+                    <div class="nav-wrap bg-white bg-transparent-card rounded-xxl shadow-xss pt-3 pb-1">
+                        <div class="nav-caption fw-600 font-xssss text-grey-500"><span></span> Account</div>
+                        <ul class="mb-1">
+                            <li class="logo d-none d-xl-block d-lg-block"></li>
+                            <li><a href="{% url 'SettingsView' %}" class="nav-content-bttn open-font h-auto pt-2 pb-2"><i class="font-sm feather-settings btn-round-md bg-blue-gradiant me-3"></i><span>Settings</span></a></li>
+                            <!-- <li><a href="default-analytics.html" class="nav-content-bttn open-font h-auto pt-2 pb-2"><i class="font-sm feather-pie-chart me-3 text-grey-500"></i><span>Analytics</span></a></li>
+                            <li><a href="default-message.html" class="nav-content-bttn open-font h-auto pt-2 pb-2"><i class="font-sm feather-message-square me-3 text-grey-500"></i><span>Chat</span><span class="circle-count bg-warning mt-0">23</span></a></li> -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- navigation left -->
+        <!-- main content -->
+        <div class="main-content right-chat-active">
+            
+            <div class="middle-sidebar-bottom">
+                <div class="middle-sidebar-left pe-0 ps-lg-3 ms-0 me-0" style="max-width: 100%;">
+                    <div class="row">
+                           
+
+                        <div class="col-lg-12 position-relative">
+                            <div class="chat-wrapper pt-0 w-100 position-relative scroll-bar bg-white theme-dark-bg">
+                                <div class="chat-body p-3 ">
+                                    <div class="messages-content pb-5" id="messages">
+                                        <!-- <div>
+                                            <div class="row">
+                                                <div class="col-lg-3 "><figure class="avatar position-absolute ms-2 mt-1 top-5"><img src="{{receiver.image.url}}" alt=""   onerror=this.src="{% static 'images/profile-2.png' %}"  class="shadow-sm rounded-circle w30"></figure></div>
+                                                <div class="col-lg-6"><label for="" style="display: flex; place-content: center; color: rgb(17, 2, 87); font-size: 20px; text-transform: capitalize; font-family: cursive;font-weight: 600;">{{receiver.username}}</label></div>
+                                                
+                                              
+                                            </div>
+                                        </div> -->
+                                        <div class="message-item " >
+                                        <div class="message-user">
+                                            <figure class="avatar">
+                                                <img src="{{receiver.image.url}}" alt=""   onerror=this.src="{% static 'images/profile-2.png' %}"  class="shadow-sm rounded-circle w50">
+                                            </figure>
+                                            <div>
+                                                <h2><b>{{receiver.username}}</b></h2>
+                                            </div>
+                                        </div>
+                                       </div>
+                                       <!-- <hr style="width: 100%;"> -->
+
+
+
+
+                                        <!-- <div class="message-item">
+                                            <div class="message-user">
+                                                <figure class="avatar">
+                                                    <img src="images/user-9.png" alt="image">
+                                                </figure>
+                                                <div>
+                                                    <h5>Byrom Guittet</h5>
+                                                    <div class="time">01:35 PM</div>
+                                                </div>
+                                            </div>
+                                            <div class="message-wrap">I'm fine, how are you 😃</div>
+                                        </div> -->
+
+                                        <!-- <div class="message-item outgoing-message">
+                                            <div class="message-user">
+                                                <figure class="avatar">
+                                                    <img src="images/user-1.png" alt="image">
+                                                </figure>
+                                                <div>
+                                                    <h5>Byrom Guittet</h5>
+                                                    <div class="time">01:35 PM<i class="ti-double-check text-info"></i></div>
+                                                </div>
+                                            </div>
+                                            <div class="message-wrap">I want those files for you. I want you to send 1 PDF and 1 image file.</div>
+                                        </div> -->
+
+                                        <!-- <div class="message-item">
+                                            <div class="message-user">
+                                                <figure class="avatar">
+                                                    <img src="images/user-9.png" alt="image">
+                                                </figure>
+                                                <div>
+                                                    <h5>Byrom Guittet</h5>
+                                                    <div class="time">01:35 PM</div>
+                                                </div>
+                                            </div>
+                                            <div class="message-wrap">I've found some cool photos for our travel app.</div>
+                                        </div> -->
+
+                                        <!-- <div class="message-item outgoing-message">
+                                            <div class="message-user">
+                                                <figure class="avatar">
+                                                    <img src="images/user-1.png" alt="image">
+                                                </figure>
+                                                <div>
+                                                    <h5>Byrom Guittet</h5>
+                                                    <div class="time">01:35 PM<i class="ti-double-check text-info"></i></div>
+                                                </div>
+                                            </div>
+                                            <div class="message-wrap">Hey mate! How are things going ?</div>
+                                        </div> -->
+
+                                        <!-- <div class="message-item">
+                                            <div class="message-user">
+                                                <figure class="avatar">
+                                                    <img src="images/user-9.png" alt="image">
+                                                </figure>
+                                                <div>
+                                                    <h5>Byrom Guittet</h5>
+                                                    <div class="time">01:35 PM</div>
+                                                </div>
+                                            </div>
+                                            <figure id="lt_img" >
+                                                <img src="images/bb-9.jpg" class="w-25 img-fluid rounded-3" alt="image">
+                                            </figure>
+                                            <div class="message-wrap"  id="lt_messages" style="margin-bottom: 90px;" >Hey mate! How are things going ?</div>
+                                            
+                                        
+                                        </div>
+
+                                        <div class="message-item outgoing-message">
+                                            <div class="message-user">
+                                                <figure class="avatar">
+                                                    <img src="images/user-1.png" alt="image">
+                                                </figure>
+                                                <div>
+                                                    <h5>Byrom Guittet</h5>
+                                                    <div class="time">01:35 PM<i class="ti-double-check text-info"></i></div>
+                                                </div>
+                                            </div>
+                                            <figure id="rt_img"> 
+                                                <img src="images/bb-9.jpg" class="w-25 img-fluid rounded-3" alt="image">
+                                            </figure>
+                                            <div class="message-wrap" id="rt_messages" style="margin-bottom: 90px;" >Hey mate! How are things going ?</div>
+
+                                        </div>
+                                        <div class="clearfix"></div> -->
+                                        <span id="imageadd"></span>
+
+                                        <!-- <div id="messages" style="background-color: #feffff;overflow: auto  ;"><span id="imageadd"></span></div> -->
+                                      
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="chat-bottom dark-bg p-3 shadow-none theme-dark-bg " style="width: 98%;position: fixed; bottom:0; ">
+                                <div class="progress" id="probar_div"  style="width: 70%; margin-left: 3rem; visibility: hidden;">
+                                    <div class="progress-bar" role="progressbar" style="width: 0%;    background-color: rgb(74, 76, 86);" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" id="progress"></div>
+                                    </div>
+                                <form class="chat-form">
+                                    <!-- <button class="bg-grey float-left" id="recording" ><i class="ti-microphone text-grey-600"></i></button> -->
+                                    <button type="button" class="bg-grey float-left"  id="filebtn"><i class="fa fa-paperclip" aria-hidden="true"></i></button><input type="file" name="file" id="file" onchange="sendFile()" hidden> 
+                                    <input type="text" class="form-group bg-greylight" style="width: 70%;color: black;" id="input" placeholder="Start typing..">         
+                                    <button class="bg-current" id="btn"  ><i class="ti-arrow-right text-white"></i></button>
+                                </form>
+                            </div> 
+                        </div>
+
+                    </div>
+                </div>
+                 
+            </div>            
+        </div>
+
+
+<!--       
+
+        <div class="row">
+         
+            <div  style="background-color: #2289bd;height: 605px;margin-top: 3rem; width: 15rem; margin-left: auto; margin-right: auto;border-radius: 5%;">
+                <label for="" style="display: flex; place-content: center; color: white; font-size: 30px; text-transform: capitalize; font-family: cursive;font-weight: 600;">{{receiver.username}}</label>
+                <div>
+                    <div id="messages" style="background-color: #b3ccd8;overflow: auto  ;height: 490px;"><span id="imageadd"></span></div>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 0%;    background-color: black;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" id="progress"></div>
+                        </div>
+                 
+                    <input type="text" id="input" placeholder="Type message" style=" width: 71%;">
+                    <button type="button" id="filebtn"><i class="fa fa-paperclip" aria-hidden="true"></i></button><input type="file" name="file" id="file" onchange="sendFile()" hidden> 
+                    <button type="button" id="btn"><i class="fa fa-telegram" aria-hidden="true" style="color: #2289bd;"></i></button>
+                    <button type="button" id="recording" class="btn btn-primary">Press</button>
+                </div>
+                
+            </div>
+         
+        </div> -->
+        
+        <!-- main content -->
+        <div class="app-header-search">
+            <form   action="{% url 'search_function' %}" method="GET"  class="search-form">
+                <div class="form-group searchbox mb-0 border-0 p-1">
+                    <input type="text" name="search_text" class="form-control border-0" placeholder="Search...">
+                    <i class="input-icon">
+                        <ion-icon name="search-outline" role="img" class="md hydrated" aria-label="search outline"></ion-icon>
+                    </i>
+                    <a href="#" class="ms-1 mt-1 d-inline-block close searchbox-close">
+                        <i class="ti-close font-xs"></i>
+                    </a>
+                </div>
+            </form>
+        </div>
+
+
+    </div> 
+    {{room_name|json_script:"room-name"}}
+    {{request.user.username|json_script:"username"}}
+    {{receiver.id|json_script:"receiver"}}
+
+   
+
+<script type="">
+    const user = JSON.parse(document.getElementById('username').textContent);
+    console.log(typeof(user),'hhhhhhh')
+   
+    {% for message in messages %}
+    console.log( typeof('{{message.sender}}'))
+    if('{{message.sender}}'== user){
+        if('{{message.msg_type}}'== 'image'){
+            document.getElementById('messages').innerHTML += ( '<br><img class="message-item outgoing-message" src={{message.getfile}} style = "width: 16em;"> ')
+            
+        }else if('{{message.msg_type}}'== 'video'){
+            document.getElementById('messages').innerHTML += ( '<br><video width="256" height="150" class="message-item outgoing-message"  controls ><source src={{message.getfile}} type="video/mp4">')
+        }else if('{{message.msg_type}}'== 'audio'){
+            document.getElementById('messages').innerHTML += ('<br><audio style = "width: 16em;" class="message-item outgoing-message" controls><source  src={{message.getfile}} type="audio/ogg">')
+        }else{
+            // document.getElementById('rt_messages').innerHTML += ('{{message.sender}}' + '  :  '+"{{message.message}}" + '\n <br>')
+            item = document.getElementById('messages');
+            var div = document.createElement('div');
+            div.className = 'message-item outgoing-message';
+            var div1 = document.createElement('div');
+            div1.className = 'message-wrap';
+            div1.textContent = "{{message.message}}";
+            div.appendChild(div1);
+            item.appendChild(div);
+        }
+    }else{
+        console.log('rrrrrrrrrrrrrrrrrrrrrrrrrr')
+        if('{{message.msg_type}}'== 'image'){
+            document.getElementById('messages').innerHTML += ( '<br><img class="message-item" src={{message.getfile}} style = "width: 16em;">')
+        }else if('{{message.msg_type}}'== 'video'){
+            document.getElementById('messages').innerHTML += ('<br><video width="256" height="150"  class="message-item" controls ><source src={{message.getfile}} type="video/mp4">')
+        }else if('{{message.msg_type}}'== 'audio'){
+            document.getElementById('messages').innerHTML += ('<br><audio style = "width: 16em;" class="message-item" controls><source src={{message.getfile}} type="audio/ogg">')
+        }else{
+            // document.getElementById('lt_messages').innerHTML += ('{{message.sender}}' + '  :  '+"{{message.message}}" + '\n <br>')
+            item = document.getElementById('messages');
+            var div = document.createElement('div');
+            div.className = 'message-item';
+            var div1 = document.createElement('div');
+            div1.className = 'message-wrap';
+            div1.textContent = "{{message.message}}";
+            div.appendChild(div1);
+            item.appendChild(div);
+        }
+
+    }
+    
+    //document.getElementById('messages').innerHTML += ('{{message.sender}}' + '  :  '+"{{message.message}}" + '\n <br>')
+    {% endfor %}
+</script>
+<!-- <script type="">
+        {% for message in messages %}
+            if('{{message.msg_type}}'== 'image'){
+                document.getElementById('messages').innerHTML += ('{{message.sender}}' + '  :  <br><img src={{message.getfile}} style = "width: 12em;"> <br>')
+            }else if('{{message.msg_type}}'== 'video'){
+                document.getElementById('messages').innerHTML += ('{{message.sender}}' + '  :  <br><video width="320" height="240" autoplay controls loop><source src={{message.getfile}} type="video/mp4"> <br>')
+            }else if('{{message.msg_type}}'== 'audio'){
+                document.getElementById('messages').innerHTML += ('{{message.sender}}' + '  :  <br><audio controls><source src={{message.getfile}} type="audio/ogg"> <br>')
+            }else{
+                document.getElementById('messages').innerHTML += ('{{message.sender}}' + '  :  '+"{{message.message}}" + '\n <br>')
+            }
+        //document.getElementById('messages').innerHTML += ('{{message.sender}}' + '  :  '+"{{message.message}}" + '\n <br>')
+        {% endfor %}
+</script> -->
+
+<script>
+    const roomName = JSON.parse(document.getElementById('room-name').textContent);
+    const username = JSON.parse(document.getElementById('username').textContent);
+    const receiver = JSON.parse(document.getElementById('receiver').textContent);
+    console.log(window.location.host)
+    const chatSocket = new WebSocket(
+        'ws://' +
+        window.location.host +
+        '/ws/chat/' + 
+        roomName + 
+        '/'
+    );
+
+
+    document.querySelector('#btn').onclick = function(e){
+        const messageInputDom = document.querySelector('#input');
+        const message = messageInputDom.value;
+        if(message == ''){
+            alert('type something')
+            return false;
+        }else{
+            chatSocket.send(JSON.stringify({
+                'message':message,
+                'type':'text',
+                'username':username,
+                'receiver':receiver,
+                
+            }));
+            messageInputDom.value = ''
+            return false;
+        }
+    };
+
+    document.querySelector('#filebtn').onclick = function(e){
+        console.log('heyyy')
+        document.getElementById('file').click()
+    };
+     //functioin to get the extension
+    function getExtension(filename) {
+        var parts = filename.split('.');
+        return parts[parts.length - 1];
+    }
+
+    //function to check file is image
+    function isImage(filename) {
+        var ext = getExtension(filename);
+        switch (ext.toLowerCase()) {
+          case 'jpg':
+          case 'gif':
+          case 'bmp':
+          case 'png':
+            //etc
+            return true;
+        }
+        return false;
+    }
+
+    //function to check file is video
+    function isVideo(filename) {
+        var ext = getExtension(filename);
+        switch (ext.toLowerCase()) {
+          case 'm4v':
+          case 'avi':
+          case 'mkv':
+          case 'mpg':
+          case 'mp4':
+            // etc
+            return true;
+        }
+        return false;
+      }
+    
+      //function to check file is audio
+      function isAudio(filename) {
+        var ext = getExtension(filename);
+        switch (ext.toLowerCase()) {
+          case 'mp3':
+          case 'm4a':
+          case 'flac':
+          case 'wav':
+          case 'aac':
+            // etc
+            return true;
+        }
+        return false;
+      }
+
+    const toBase64 = file => new Promise((resolve, reject) => {
+        //console.log(file)
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = error => reject(error);
+    });
+    
+    async function sendFile() {
+        document.getElementById('probar_div').style.visibility = 'visible'
+        document.getElementById('progress').style.width = '0%'
+        const file = document.querySelector('#file').files[0];
+        var chunkSize = 5120 * 5120;
+        var fileSize = file.size;
+        var chunks = Math.ceil(file.size/chunkSize,chunkSize);
+        var percent = 100/chunks;
+        var onechunk = percent;
+        var chunk = 0;
+        if (isImage(file.name)) {
+            var type = 'image'
+       }else if(isVideo(file.name)){
+           var type = 'video'
+       }else if(isAudio(file.name)){
+           var type = 'audio'
+       }else{
+           var type = 'text'
+       }
+       console.log(type)
+        while (chunk < chunks) {
+            var offset = chunk*chunkSize;
+            var blob_data = file.slice(offset,offset+chunkSize);
+            document.getElementById('progress').style.width = percent+'%'
+            percent = percent + onechunk;
+            var loop_end = 'false'
+            if(chunk+1 >= chunks){
+                loop_end = 'true'
+            }
+            chunk++;
+            var dataURL = await toBase64(blob_data)
+            chatSocket.send(JSON.stringify({
+                'message':dataURL,
+                'type':type,
+                'loop_end':loop_end,
+                'username':username,
+                'receiver':receiver,
+                
+            }));
+        }
+       //console.log(await toBase64(file));
+       //console.log(file.name)
+       //console.log(dataURL)
+    }
+
+    chatSocket.onmessage =async function(e){
+        const data = JSON.parse(e.data);
+        if( data.username == user){
+            if(data.msgtype == 'text'){
+            // document.getElementById('messages').innerHTML += (data.username + '  :  '+data.message + '\n <br>' )
+            item = document.getElementById('messages');
+            var div = document.createElement('div');
+            div.className = 'message-item outgoing-message';
+            var div1 = document.createElement('div');
+            div1.className = 'message-wrap';
+            div1.textContent = data.message;
+            div.appendChild(div1);
+            item.appendChild(div);
+            window.scrollBy(0, 10000);
+            }else if(data.msgtype == 'image'){
+                document.getElementById('probar_div').style.visibility = 'hidden'
+                document.getElementById('messages').innerHTML += (' <br><img class="message-item outgoing-message" src='+data.message+' style = "width: 16em;"> ')
+                window.scrollBy(0, 10000);
+            }else if(data.msgtype == 'video'){ 
+                document.getElementById('probar_div').style.visibility = 'hidden'
+                document.getElementById('messages').innerHTML += (' <br><video class="message-item outgoing-message" width="256" height="150"  controls ><source src='+data.message+' type="video/mp4"> ')
+                window.scrollBy(0, 10000);
+            }else if(data.msgtype == 'audio'){
+                document.getElementById('probar_div').style.visibility = 'hidden'
+                document.getElementById('messages').innerHTML += ('<br><audio  style = "width: 16em;"  class="message-item outgoing-message" controls ><source src='+data.message+' type="audio/ogg"> ')
+                window.scrollBy(0, 10000);
+            }else{
+                document.getElementById('messages').innerHTML += (' data not found \n <br>' )
+                window.scrollBy(0, 10000);
+        }
+        }else{
+            if(data.msgtype == 'text'){
+            // document.getElementById('messages').innerHTML += (data.username + '  :  '+data.message + '\n <br>' )
+            item = document.getElementById('messages');
+            var div = document.createElement('div');
+            div.className = 'message-item';
+            var div1 = document.createElement('div');
+            div1.className = 'message-wrap';
+            div1.textContent = data.message;
+            div.appendChild(div1);
+            item.appendChild(div);
+            window.scrollBy(0, 10000);
+            }else if(data.msgtype == 'image'){
+                document.getElementById('probar_div').style.visibility = 'hidden'
+                document.getElementById('messages').innerHTML += ('<br><img class="message-item" src='+data.message+' style = "width: 16em;"> ')
+                window.scrollBy(0, 10000);
+            }else if(data.msgtype == 'video'){
+                document.getElementById('probar_div').style.visibility = 'hidden'
+                document.getElementById('messages').innerHTML += ('<br><video class="message-item" width="256" height="150"  controls ><source src='+data.message+' type="video/mp4"> ')
+                window.scrollBy(0, 10000);
+            }else if(data.msgtype == 'audio'){
+                document.getElementById('probar_div').style.visibility = 'hidden'
+                document.getElementById('messages').innerHTML += ('<br><audio style = "width: 16em;" class="message-item" controls ><source src='+data.message+' type="audio/ogg"> ')
+                window.scrollBy(0, 10000);
+            }else{
+                document.getElementById('messages').innerHTML += ('data not found \n <br>' )
+                window.scrollBy(0, 10000);
+            }
+        }
+    
+        
+    }
+    function refresh(){
+        window.location.reload()
+    }
+  
+  
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/64d58efce2.js"></script>
+
+
+   
+
+
+    
+    <script src="{% static 'js/plugin.js' %}"></script>
+
+    <script src="{% static 'js/lightbox.js' %}"></script>
+    <script src="{% static 'js/scripts.js' %}"></script>
+   
+    <script>
+         
+           $('html, body').animate({scrollTop:$(document).height()}, 'slow');
+        
+
+       
+    </script>
+   
+
+    
+</body>
+
+
+<!-- Mirrored from uitheme.net/sociala/default.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 21 Apr 2021 08:00:04 GMT -->
+</html>

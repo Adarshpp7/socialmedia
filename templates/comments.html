@@ -1,0 +1,82 @@
+{% extends 'baseuser.html' %}
+{% block content %}
+{% load static %}
+<div class="main-content right-chat-active">
+            
+    <div class="middle-sidebar-bottom">
+        <div class="middle-sidebar-left pe-0 ps-lg-3 ms-0 me-0" style="max-width: 100%;">
+            <div class="row">
+                <div class="card col-lg-6 position-relative border-0 ">
+                    <div class="card-body ps-2 pe-4 pb-0 d-flex"> 
+                        <figure class="avatar me-3"><img src="{{post.user.image.url}}" alt="image" class="shadow-sm rounded-circle w45"></figure>
+                        <h4 class="fw-700 text-grey-900 font-xssss mt-1 text-left">{{post.user.username}} <span class="d-block font-xssss fw-500 mt-1 lh-3 text-grey-500">{{post.date_posted}}</span></h4>
+                         <!-- <a href="#" class="ms-auto"><i class="ti-more-alt text-grey-900 btn-round-md bg-greylight font-xss"></i></a> -->
+                        </div>
+                        <div class="card-body d-flex ps-2 pe-4 pt-0 pb-0 mt-0  ">
+                            <p class="fw-500 text-500 lh-26 font-xssss w-100" style="color: black;"> {{post.description}}</p>
+                        </div>
+                        {% if post.pic.url != none %}
+                        <div class=" row card-body d-flex ps-2 pe-2 " >
+                            <div class="  text-center" style="background-color: rgb(244, 244, 244);" ><a href="{{post.pic.url}}"  data-lightbox="roadtrip"><img src="{{post.pic.url}}"  class="rounded-3  w-75 "  alt="image"></a></div>
+                        </div>
+                        {% endif %}
+                        <div class="card-body d-flex ps-2 pe-4 pt-0 mt-0"> 
+                            <!-- <a href="#" class="d-flex align-items-center fw-600 text-grey-900 lh-26 font-xssss me-3 text-dark"><i class="feather-thumbs-up text-white bg-primary-gradiant me-1 btn-round-xs font-xss"></i> <i class="feather-heart text-white bg-red-gradiant me-2 btn-round-xs font-xss"></i>{{post.likes_count}}</a> -->
+                            <!-- <a href="#" class="d-flex align-items-center fw-600 text-grey-900 lh-26 font-xssss text-dark"><i class="feather-message-circle text-grey-900 btn-round-sm font-lg text-dark"></i>{{post.comments_count}}</a> -->
+                            
+                            <a onclick="like1('{{post.id}}')"  class="d-flex  fw-600 text-grey-900 text-dark lh-26 font-xssss"><i class="feather-thumbs-up text-white bg-primary-gradiant me-1 btn-round-xs font-xss"></i> </a><h5 class="mt-2"><b id="lkk{{post.id}}">{{post.likes_count}} like </b></h5>&nbsp;&nbsp;
+                            <a href="{% url 'CommentPostView' post.id %}" class="d-flex  fw-600 text-grey-900 text-dark lh-26 font-xssss"><i class="feather-message-circle text-dark text-grey-900 me-1 btn-round-xs font-lg"></i></a><h5 class="mt-2"><b  id="ckk{{post.id}}">{{post.comments_count}} comment</b></h5>&nbsp;&nbsp;
+                            <textarea name="" id="comment1{{post.id}}" class="rounded-xxxl p-1   font-xssss text-dark fw-500 border-light-md theme-dark-bg" placeholder="Comment here..." style="height: 20pt;" id="" cols="25" rows="1"></textarea>
+                            <button class="ps-2 pe-2 bg-blue-gradiant rounded-xxxl " onclick="cmt_post1('{{post.id}}')" type="button" style="height: 20pt;border: 5pt; font-size: 7pt; color: white; font-weight: 900;">POST</button>
+                        </div>
+                        <!-- <div class="card-body d-flex ps-2 pe-4 pt-0 mt-0">
+                            <div class="container">
+                            <div class="row " style="">
+                              
+                             
+                                <textarea name="message" id="comment1{{post.id}}" class="rounded-xxxl p-2  font-xssss text-dark fw-500 border-light-md theme-dark-bg" cols="40" rows="" placeholder="comment on this post........"></textarea>
+                               <button  class="btn  btn-primary" style="font-size: 6pt;" onclick="cmt_post1('{{post.id}}')" type="button">post</button>
+                               
+                               </div>
+                            </div>
+                            
+                        </div> -->
+                        <div class="card w-100 border-0 shadow-none right-scroll-bar"></div>
+
+                </div>
+                   
+            
+                <div class="col-lg-6">
+                    <div class="chat-wrapper pt-0  scroll-bar bg-white theme-dark-bg position-absolute all-0 d-flex flex-column w-100 h-100">
+                        <div class="chat-body p-3 ">
+                            <div class="messages-content pb-5">
+                                {% for comment in comments %}   
+                                <div class="message-item">
+                                    <div class="message-user">
+                                        <figure class="avatar">
+                                            <img src="{{comment.user.image.url}}"  onerror=this.src="{% static 'images/profile-2.png' %}" alt=" ">
+                                        </figure>
+                                        <div>
+                                            <h5>{{comment.user.username}}</h5>
+                                            <div class="time">{{comment.comment_date}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="message-wrap">{{comment.comment}}</div>
+                                </div>
+                                {% endfor %}
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+
+            </div>
+        </div>
+         
+    </div>            
+</div>
+
+{% endblock %}

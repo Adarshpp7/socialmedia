@@ -1,0 +1,100 @@
+{% extends 'admintemplates/baseadmin.html' %}
+{% block link %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+<link rel="stylesheet" href=" https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
+
+
+{% endblock %}
+{% load static %}
+
+{% block content %} 
+<nav class="navbar navbar-expand navbar-light bg-info topbar mb-4 static-top shadow">
+    <div class="container">
+        <div class="row col-sm-12 justify-content-center">
+          <h1><b>Your Users</b> </h1>
+        </div>
+    </div>
+
+</nav>
+<div class="container-fluid">
+    
+    
+    <!-- Page Heading -->
+  
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary"></h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table id="example" class="table table-striped table-bordered" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>first Name</th>
+                            <th>email</th>
+                            <th>Phone number</th>
+                            <th></th>
+                          
+                        </tr>
+                    </thead>
+                   
+                    <tbody>
+                        {% for data in users %}
+                        <tr>
+                            <td> <a href="" class="p-0 ms-3 menu-icon"><img src="{{data.image.url}}"alt="" style="width: 20pt; height: 20pt;"  onerror=this.src="{% static 'images/profile-2.png' %}" class=" rounded-circle mt--1"></a> {{data.username}}</td>
+                         
+                            <td>{{data.email}}</td>
+                            <td>{{data.phone_number}} </td>
+                            {% if data.is_active == False %} 
+                                
+                                <td><a onclick="block_unblock('{{data.id}}')"> <button  id="bl{{data.id}}" class="btn btn-success">Unblock</button> </a></td>
+                            {% else %}
+                                <td><a onclick="block_unblock('{{data.id}}')"><button id="bl{{data.id}}" class="btn btn-warning">Block</button></a></td>
+                            {% endif %}
+                           
+                            
+                        </tr>
+                        {% endfor %}
+                        
+                    </tbody>
+                </table>
+            </div>   
+        </div>        
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
+<script>
+    $(document).ready(function() {
+    $('#example').DataTable();
+} );
+</script>
+<script>
+    function block_unblock(id){
+        var content = document.getElementById('bl'+id).textContent;
+        $.ajax({
+            url:'/admin/user_block/' + id + '/',
+            datatype: 'json', 
+            method:'GET',
+            success: function(data){
+                if (data == 'true'){
+                    if(content == 'Block'){
+                        document.getElementById('bl' + id).textContent = 'Unblock'
+                        document.getElementById('bl' + id).className = 'btn btn-success'
+                    }
+                    else{
+                        document.getElementById('bl' + id).textContent = 'Block'
+                        document.getElementById('bl' + id).className = 'btn btn-warning'
+                    }
+                }
+            }
+        })
+    }
+</script>
+
+
+
+{% endblock %}
