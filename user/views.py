@@ -127,7 +127,6 @@ class DetailsChangeView(View):
             current_user.gender = request.POST['gender']
             # current_user.birth_date = request.POST['dateObirth']
             if image1 != '':
-                print('theeeeeeeeeeee')
                 format, imgstr = image1.split(';base64,')
                 ext = format.split('/')[-1]
                 img1 = ContentFile(base64.b64decode(imgstr),name= request.user.username+ '.' + ext)
@@ -143,7 +142,6 @@ def user_profile_view(request, id):
     posts = Post.objects.filter(user=selected_user)
     post_count = posts.count()
     friends_count = selected_user.friends.count()
-    print(friends_count)
     followers_count = Followings.objects.filter(to_user=selected_user).count() + friends_count
     following_count = Followings.objects.filter(from_user=selected_user).count() + friends_count
     if selected_user in request.user.friends.all():
@@ -167,7 +165,6 @@ def users_list(request):
             id_list.append(follow.to_user.id)
         elif follow.to_user == request.user:
             id_list.append(follow.from_user.id)
-    print(id_list,'mmmmmmmmmmmmmmmmmmmmm')
 
     user1 = User_Profile.objects.exclude(id__in =id_list) 
     # print(follow)
@@ -305,7 +302,7 @@ def start_chat(request,id):
 def search_function(request):
     search_input = request.GET['search_text']  
         # search_result = User_Profile.objects.filter(username__icontains=search_input) or User_Profile.objects.filter(first_name__icontains=search_input) or User_Profile.objects.filter(last_name__icontains=search_input)
-        # print(type(search_result),'yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy')
+        # print(type(search_result))
     if User_Profile.objects.filter(Q(username__icontains=search_input) | Q(first_name__icontains=search_input) | Q(last_name__icontains=search_input)).exists():
         search_result = User_Profile.objects.filter(Q(username__icontains=search_input) | Q(first_name__icontains=search_input) | Q(last_name__icontains=search_input))
         friends_list =[]
